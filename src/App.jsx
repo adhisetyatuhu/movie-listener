@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import './App.css'
+import Header from './components/header/Header'
 
 function App() {
 
   return (
     <>
-      <h1>Test</h1>
+      <h1 className='text-center'>Test</h1>
     </>
   )
 }
