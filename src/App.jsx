@@ -6,7 +6,9 @@ function App() {
 
   return (
     <>
-      <h1 className='text-center'>Test</h1>
+      <div className='container pt-3'>
+        <Header />
+      </div>
     </>
   )
 }
