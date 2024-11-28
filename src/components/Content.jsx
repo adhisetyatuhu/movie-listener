@@ -68,6 +68,34 @@ const Card = (props) => {
     );
 }
 
+const Billboard = () => {
+    const figureStyle = {
+        height: "25rem",
+        backgroundColor: "#777"
+    }
+
+    const titleContainerStyle = {
+        padding: "2em",
+        backgroundColor: "rgba(0,0,0,0.3)",
+        color: "white",
+        bottom: "1em",
+        maxWidth: "40em"
+    }
+
+    return (
+        <>
+            <div className="position-relative">
+                <figure style={figureStyle}></figure>
+                <div className="position-absolute" style={titleContainerStyle}>
+                    <h2>Some Title</h2>
+                    <p>A description. It can be very very long description, anything will do. This is also a description. We will test how long it can hold.</p>
+                    <button className="btn btn-outline-light">More Info</button>
+                </div>
+            </div>
+        </>
+    );
+}
+
 const Content = () => {
     const size = 15;
     // height and width ratio = 10:8
@@ -78,7 +106,8 @@ const Content = () => {
 
     return (
         <>
-            <div className="d-flex gap-2">
+            <div><Billboard /></div>
+            <div className="d-flex gap-2 overflow-scroll">
                 <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
                 <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
                     <Banner text="New" borderRadius={borderRadius} />
