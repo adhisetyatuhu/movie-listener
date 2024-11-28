@@ -76,7 +76,7 @@ const Billboard = () => {
 
     const titleContainerStyle = {
         padding: "2em",
-        backgroundColor: "rgba(0,0,0,0.3)",
+        background: "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0))",
         color: "white",
         bottom: "1em",
         maxWidth: "40em"
@@ -108,10 +108,15 @@ const Content = () => {
         <>
             <div><Billboard /></div>
             <div className="d-flex gap-2 overflow-scroll">
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
                 <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
                     <Banner text="New" borderRadius={borderRadius} />
                 </Card>
+                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
+                    <Banner text="New" borderRadius={borderRadius} />
+                </Card>
+                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
+                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
+                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
                 <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
                 <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
             </div>
