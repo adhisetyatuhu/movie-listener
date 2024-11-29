@@ -6,7 +6,7 @@ const SearchIcon = (props) => {
 
 const Search = (props) => {
     return (
-        <div className="input-group mb-3">
+        <div className="input-group">
             <input type="text" className="form-control" placeholder={props.placeholder} aria-label={props.label} aria-describedby="button-addon2" />
             <button className="btn btn-outline-secondary" type="button" id="button-addon2" style={{borderColor: props.borderColor}}>
                 <SearchIcon height="24px" fill={props.iconColor} />
@@ -18,12 +18,12 @@ const Search = (props) => {
 const Header = () => {
     return (
         <>
-            <nav className="row">
+            <nav className="row align-items-center my-3">
                 <div className="col-12 col-md-6 align-items-center">
-                    MOVIE TIME
+                    <h1 className="text-light">MOVIE TIME</h1>
                 </div>
                 <div className="col-12 col-md-6 align-items-center">
-                    <Search placeholder="Search" iconColor="#777" borderColor="#ddd" />
+                    <Search placeholder="Search" iconColor="#fff" borderColor="#ddd" />
                 </div>
             </nav>
         </>

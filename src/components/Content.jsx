@@ -76,9 +76,9 @@ const Billboard = () => {
 
     const titleContainerStyle = {
         padding: "2em",
-        background: "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0))",
+        background: "linear-gradient(20deg, rgba(0,0,0,0.4), rgba(0,0,0,0), rgba(0,0,0,0)), linear-gradient(80deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2), rgba(0,0,0,0))",
         color: "white",
-        bottom: "1em",
+        bottom: "0",
         maxWidth: "40em"
     }
 
@@ -107,7 +107,7 @@ const Content = () => {
     return (
         <>
             <div><Billboard /></div>
-            <div className="d-flex gap-2 overflow-scroll">
+            <div className="d-flex gap-2 overflow-scroll hide-scrollbar">
                 <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
                     <Banner text="New" borderRadius={borderRadius} />
                 </Card>
