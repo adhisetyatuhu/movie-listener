@@ -41,17 +41,17 @@ const Content = () => {
         <>
             <div><Billboard /></div>
             <div className="d-flex gap-2 overflow-scroll hide-scrollbar">
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
+                <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
                     <CardBanner text="New" borderRadius={borderRadius} />
                 </Card>
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
+                <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
                     <CardBanner text="New" borderRadius={borderRadius} />
                 </Card>
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
-                <Card height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
+                <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
+                <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
+                <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
+                <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
+                <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}></Card>
             </div>
         </>
     );

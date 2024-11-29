@@ -1,29 +1,9 @@
-const Banner = (props) => {
-    const borderRadius = props.borderRadius;
-    const text = props.text;
-
-    const bannerStyle = {
-        position: "absolute",
-        backgroundColor: "red",
-        color: "white",
-        borderRadius: `${borderRadius} 0 0 0`,
-        fontSize: "0.75em",
-        padding: "0 0.5em",
-        top: "0"
-    }
-    return (
-        <>
-            <span style={bannerStyle}>{text}</span>
-        </>
-    );
-}
-
 const Card = (props) => {
     const classes = props.classes ? props.classes : "";
-    const height = props.height ? props.height : "10rem";
-    const width = props.width ? props.width : "8rem";
+    const height = props.height ? props.height : "15rem";
+    const width = props.width ? props.width : "12rem";
     const borderRadius = props.borderRadius ? props.borderRadius : "0.5em";
-    const containerHeight = props.containerHeight;
+    const containerHeight = props.containerHeight ? props.containerHeight : "17rem";
 
     const cardStyle = {
         position: "relative",
@@ -61,7 +41,7 @@ const Card = (props) => {
                 <div style={cardStyle}>
                     {props.children}
                     <figure style={figureStyle}></figure>
-                    <figcaption style={figcaptionStyle}>Title yang Panjang Apakah yang Terjadi?</figcaption>
+                    <figcaption style={figcaptionStyle}>{props.text}</figcaption>
                 </div>
             </div>
         </>
