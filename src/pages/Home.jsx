@@ -1,5 +1,5 @@
-import Card from "./Card";
-import CardBanner from "./CardBanner";
+import Card from "../components/Card";
+import CardBanner from "../components/CardBanner";
 
 const Billboard = () => {
     const figureStyle = {
@@ -29,7 +29,7 @@ const Billboard = () => {
     );
 }
 
-const Content = () => {
+const Home = () => {
     const size = 15;
     // height and width ratio = 10:8
     const height = `${size}rem`;
@@ -57,4 +57,4 @@ const Content = () => {
     );
 }
 
-export default Content;
+export default Home;

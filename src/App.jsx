@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
-import Content from './components/Content'
+import Home from './pages/Home'
 import SearchResult from './pages/SearchResult'
 
 function App() {
-  const [page, setPage] = useState("search");  // home | search
+  const [page, setPage] = useState("home");  // home | search
   let pageView;
 
   switch(page) {
     case "home":
-      pageView = <Content />;
+      pageView = <Home />;
       break;
     case "search":
       pageView = <SearchResult keyword="Some Keyword" />;
