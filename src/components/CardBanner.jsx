@@ -1,19 +1,9 @@
 const CardBanner = (props) => {
-    const borderRadius = props.borderRadius;
     const text = props.text;
 
-    const bannerStyle = {
-        position: "absolute",
-        backgroundColor: "red",
-        color: "white",
-        borderRadius: `${borderRadius} 0 0 0`,
-        fontSize: "0.75em",
-        padding: "0 0.5em",
-        top: "0"
-    }
     return (
         <>
-            <span style={bannerStyle}>{text}</span>
+            <span className="absolute bg-red-600 text-white rounded-tl-lg text-xs py-1 px-2 top-0">{text}</span>
         </>
     );
 }

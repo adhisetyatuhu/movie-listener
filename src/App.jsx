@@ -7,7 +7,7 @@ import Detail from './pages/Detail'
 import Error from './pages/Error'
 
 function App() {
-  const [page, setPage] = useState("detail");  // home | search
+  const [page, setPage] = useState("home");  // home | search
   let pageView;
 
   switch(page) {
