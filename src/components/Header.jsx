@@ -3,11 +3,12 @@ import Search from "./Search";
 const Header = () => {
     return (
         <>
-            <nav className="row align-items-center my-3">
-                <div className="col-12 col-md-6 align-items-center">
-                    <h1 className="text-light">MOVIE TIME</h1>
+            {/* <nav className="row align-items-center my-3"> */}
+            <nav className="flex justify-between flex-wrap items-center my-3">
+                <div className="w-ful md:w-1/2">
+                    <h1 className="text-white">MOVIE LISTENER</h1>
                 </div>
-                <div className="col-12 col-md-6 align-items-center">
+                <div className="w-full md:w-1/2">
                     <Search placeholder="Search" iconColor="#fff" borderColor="#ddd" />
                 </div>
             </nav>

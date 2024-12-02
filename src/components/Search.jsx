@@ -6,9 +6,9 @@ const SearchIcon = (props) => {
 
 const Search = (props) => {
     return (
-        <div className="input-group">
-            <input type="text" className="form-control" placeholder={props.placeholder} aria-label={props.label} aria-describedby="button-addon2" />
-            <button className="btn btn-outline-secondary" type="button" id="button-addon2" style={{borderColor: props.borderColor}}>
+        <div className="flex">
+            <input type="text" className="w-full rounded-l-md py-1 pl-2 focus:outline-none focus:shadow-[inset_0.15em_0.15em_0.15em_rgba(0,0,0,0.5)] focus:bg-cyan-50" placeholder={props.placeholder} aria-label={props.label} aria-describedby="button-addon2" />
+            <button className="rounded-r-md border-solid border-2 py-1 px-2 hover:bg-white/20" type="button" id="search" style={{borderColor: props.borderColor}}>
                 <SearchIcon height="24px" fill={props.iconColor} />
             </button>
         </div>
