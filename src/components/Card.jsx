@@ -2,46 +2,17 @@ const Card = (props) => {
     const classes = props.classes ? props.classes : "";
     const height = props.height ? props.height : "15rem";
     const width = props.width ? props.width : "12rem";
-    const borderRadius = props.borderRadius ? props.borderRadius : "0.5em";
     const containerHeight = props.containerHeight ? props.containerHeight : "17rem";
-
-    const cardStyle = {
-        position: "relative",
-        height: height,
-        width: width,
-        overflow: "hidden"
-    }
-    
-    const figureStyle = {
-        height: height,
-        borderRadius: borderRadius,
-        backgroundColor: "#777"
-    };
-
-    const figcaptionStyle = {
-        position: "absolute",
-        bottom: "0",
-        color: "white",
-        fontSize: "0.75em",
-        left: "50%",
-        transform: "translateX(-50%)",
-        textAlign: "center",
-        width: width,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        borderRadius: `0 0 ${borderRadius} ${borderRadius}`
-    }
-
-    const containerStyle = {
-        height: containerHeight,
-    }
 
     return (
         <>
-            <div className={classes} style={containerStyle}>
-                <div style={cardStyle}>
+            <div className={classes} style={{"height": containerHeight}}>
+                <div className="relative overflow-hidden rounded-lg" style={{"height": height, "width": width}}>
                     {props.children}
-                    <figure style={figureStyle}></figure>
-                    <figcaption style={figcaptionStyle}>{props.text}</figcaption>
+                    <figure className="bg-[#777]" style={{"height": height}}></figure>
+                    <figcaption className="absolute rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/50" style={{"width": width}}>
+                        {props.text}
+                    </figcaption>
                 </div>
             </div>
         </>
