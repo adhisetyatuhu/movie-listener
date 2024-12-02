@@ -5,8 +5,8 @@ const Header = () => {
         <>
             {/* <nav className="row align-items-center my-3"> */}
             <nav className="flex justify-between flex-wrap items-center my-3">
-                <div className="w-ful md:w-1/2">
-                    <h1 className="text-white text-4xl font-bold">MOVIE LISTENER</h1>
+                <div className="w-full md:w-1/2">
+                    <h1 className="text-white text-4xl font-bold mb-4 md:mb-0">MOVIE LISTENER</h1>
                 </div>
                 <div className="w-full md:w-1/2">
                     <Search placeholder="Search" iconColor="#fff" borderColor="#ddd" />
