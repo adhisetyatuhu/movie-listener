@@ -2,27 +2,14 @@ import Card from "../components/Card";
 import CardBanner from "../components/CardBanner";
 
 const Billboard = () => {
-    const figureStyle = {
-        height: "25rem",
-        backgroundColor: "#777"
-    }
-
-    const titleContainerStyle = {
-        padding: "2em",
-        background: "linear-gradient(20deg, rgba(0,0,0,0.4), rgba(0,0,0,0), rgba(0,0,0,0)), linear-gradient(80deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2), rgba(0,0,0,0))",
-        color: "white",
-        bottom: "0",
-        maxWidth: "40em"
-    }
-
     return (
         <>
-            <div className="position-relative">
-                <figure style={figureStyle}></figure>
-                <div className="position-absolute" style={titleContainerStyle}>
-                    <h2>Some Title</h2>
-                    <p>A description. It can be very very long description, anything will do. This is also a description. We will test how long it can hold.</p>
-                    <button className="btn btn-outline-light">More Info</button>
+            <div className="relative">
+                <figure className="h-[28rem] bg-[#777]"></figure>
+                <div className="absolute p-8 text-white max-w-2xl bottom-0 bg-gradient-to-r from-black/40 to-black/0">
+                    <h2 className="text-3xl">Some Title</h2>
+                    <p className="my-2">A description. It can be very very long description, anything will do. This is also a description. We will test how long it can hold.</p>
+                    <button className="py-2 px-4 my-2 border bg-black/10 rounded-lg hover:bg-white/30 active:bg-black/10">More Info</button>
                 </div>
             </div>
         </>
@@ -39,8 +26,8 @@ const Home = () => {
 
     return (
         <>
-            <div><Billboard /></div>
-            <div className="d-flex gap-2 overflow-scroll hide-scrollbar">
+            <div className="py-3"><Billboard /></div>
+            <div className="flex gap-2 overflow-scroll hide-scrollbar">
                 <Card text="Title yang Panjang Apakah yang Terjadi?" height={height} width={width} containerHeight={containerHeight} borderRadius={borderRadius}>
                     <CardBanner text="New" borderRadius={borderRadius} />
                 </Card>
