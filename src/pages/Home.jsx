@@ -21,25 +21,42 @@ const Billboard = (props) => {
     );
 }
 
+const LoadingBillboard = () => {
+    return (
+        <>
+            <div className="relative">
+                <div className="h-[28rem] bg-slate-200 animate-pulse"></div>
+            </div>
+        </>
+    );
+}
+
 const Home = () => {
-    const [billboardData, setBillboardData] = useState(null);
+    const [randomIdx, setRandomIdx] = useState(0);
     const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     
     const fetchMovies = async () => {
         try {
+            setIsLoading(true);
             const { data } = await tmdb.get('/discover/movie');
-            const randomNum = Math.floor(Math.random() * 20);
             setMovies(data?.results);
-            setBillboardData(movies[randomNum]);
-            // console.log(data);
+            const randomNum = Math.floor(Math.random() * 20);
+            setRandomIdx(randomNum);
         } catch (error) {
             console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     }
 
     useEffect(() => {
         fetchMovies();
     }, []);
+
+    useEffect(() => {
+        fetchMovies();
+    }, [randomIdx]);
 
     const size = 15;
     // height and width ratio = 10:8
@@ -50,7 +67,11 @@ const Home = () => {
 
     return (
         <>
-            <div className="py-3"><Billboard data={billboardData} /></div>
+            <div className="py-3">
+                {
+                    isLoading ? <LoadingBillboard /> : <Billboard data={movies[randomIdx]} />
+                }
+            </div>
             <div className="flex gap-2 overflow-scroll hide-scrollbar">
                 {
                     movies.map(movie => {
