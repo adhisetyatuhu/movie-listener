@@ -12,10 +12,10 @@ const Card = (props) => {
             <div className={classes} style={{"height": containerHeight}}>
                 <div className="relative overflow-hidden rounded-lg" style={{"height": height, "width": width}}>
                     {props.children}
-                    <figure className="bg-[#fff]" style={{"height": height}}>
-                        <img className="hover:opacity-50 hover:cursor-pointer" src={posterUrl} />
+                    <figure className="bg-[#fff] peer" style={{"height": height}}>
+                        <img className="hover:opacity-50 hover:cursor-pointer active:opacity-100 duration-100 transition-all" src={posterUrl} />
                     </figure>
-                    <figcaption className="absolute py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline" style={{"width": width}}>
+                    <figcaption className="absolute duration-100 transition-all peer-hover:bg-black/40 peer-active:bg-black/70 py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline" style={{"width": width}}>
                         {title}<span>{releasedYear ? " ("+releasedYear+")": ""}</span>
                     </figcaption>
                 </div>
