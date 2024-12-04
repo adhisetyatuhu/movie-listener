@@ -1,7 +1,26 @@
+import Card from "../components/Card";
+
 const Genre = ({children}) => {
     return (
         <>
             <button className="py-0.5 px-4 border bg-black/10 rounded-xl hover:bg-white/30 active:bg-black/30">{children}</button>
+        </>
+    );
+}
+
+function Cast({name, character}) {
+    return (
+        <>
+            <div className="h-[17rem]">
+                <div className="relative overflow-hidden rounded-lg h-[15rem] w-[12rem] bg-slate-600/30">
+                    <figure className="bg-[#fff]/30 peer h-[15rem]">
+                        {/* <img className="hover:opacity-50 hover:cursor-pointer active:opacity-100 duration-100 transition-all" src={posterUrl} /> */}
+                    </figure>
+                    <figcaption className="absolute w-[12rem] duration-100 transition-all peer-hover:bg-black/20 peer-active:bg-black/70 py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline">
+                        {name}<span className="block">as {character}</span>
+                    </figcaption>
+                </div>
+            </div>
         </>
     );
 }
@@ -33,9 +52,9 @@ const MovieOverview = () => {
 
                                 <p className="my-6">Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.</p>
                                 <div className="flex gap-2">
+                                    <Genre>Adventure</Genre>
                                     <Genre>Action</Genre>
-                                    <Genre>Crime</Genre>
-                                    <Genre>Thriller</Genre>
+                                    <Genre>Science Fiction</Genre>
                                 </div>
                             </div>
                             <div className="my-8 flex gap-16 md:gap-48 lg:gap-0 lg:flex-col">
@@ -65,6 +84,19 @@ const MovieOverview = () => {
                         </figure>
 
                     </div>
+                </div>
+                
+                <h2 className="text-3xl font-bold mt-8 mb-4">Casts</h2>
+                <div className="flex gap-2 overflow-scroll hide-scrollbar">
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
+                    <Cast name="John Doe" character="James Bon" />
                 </div>
             </div>
         </>
