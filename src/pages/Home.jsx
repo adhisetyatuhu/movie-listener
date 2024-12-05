@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import CardBanner from "../components/CardBanner";
 import tmdb from "../utils/axios";
+import { useNavigate } from "react-router-dom";
 
 const Billboard = (props) => {
+    const navigate = useNavigate();
     const imgUrl = `https://image.tmdb.org/t/p/original${props.data?.backdrop_path}`;
     return (
         <>
@@ -14,7 +16,7 @@ const Billboard = (props) => {
                 <div className="absolute p-8 text-white max-w-xl lg:max-w-3xl bottom-0 bg-gradient-to-r from-black/60 to-black/0">
                     <h2 className="text-3xl drop-shadow shadow-black" style={{textShadow : "0 0 1px #000000"}}>{ props.data?.title }</h2>
                     <p className="my-2 line-clamp-2 md:line-clamp-3" style={{textShadow : "0 0 2px #000000"}}>{ props.data?.overview }</p>
-                    <button className="py-1 md:py-2 px-4 my-2 border bg-black/10 rounded-lg hover:bg-white/30 active:bg-black/10">More Info</button>
+                    <button onClick={() => { navigate(`/detail/${props.data?.id}`) }} className="py-1 md:py-2 px-4 my-2 border bg-black/10 rounded-lg hover:bg-white/30 active:bg-black/10">More Info</button>
                 </div>
             </div>
         </>
