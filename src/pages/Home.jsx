@@ -39,6 +39,7 @@ const LoadingBillboard = () => {
 
 const Home = () => {
     const [randomIdx, setRandomIdx] = useState(0);
+    const [billboard, setBillboard] = useState(null);
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
@@ -61,8 +62,9 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        fetchMovies();
-    }, [randomIdx]);
+        // fetchMovies();
+        setBillboard(movies[randomIdx]);
+    }, [movies]);
 
     const size = 15;
     // height and width ratio = 10:8
@@ -75,7 +77,7 @@ const Home = () => {
         <>
             <div className="py-3">
                 {
-                    isLoading ? <LoadingBillboard /> : <Billboard data={movies[randomIdx]} />
+                    isLoading ? <LoadingBillboard /> : <Billboard data={billboard} />
                 }
             </div>
             <div className="flex gap-2 overflow-scroll hide-scrollbar">
