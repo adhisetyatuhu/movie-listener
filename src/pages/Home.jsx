@@ -62,7 +62,6 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        // fetchMovies();
         setBillboard(movies[randomIdx]);
     }, [movies]);
 

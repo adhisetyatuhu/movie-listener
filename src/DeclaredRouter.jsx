@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
@@ -16,12 +16,16 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: 'detail',
+                path: 'detail/:id',
                 element: <Detail />,
             },
             {
                 path: 'search/:keyword',
                 element: <SearchResult />,
+            },
+            {
+                path: 'search/',
+                element: <Home />,
             },
             {
                 path: 'error',
@@ -31,5 +35,11 @@ const router = createBrowserRouter([
     },
 ])
 
+const DeclaredRouter = () => {
+    return (
+        <RouterProvider router={router} />
+    );
+}
 
-export default router;
+
+export default DeclaredRouter;

@@ -5,7 +5,8 @@ const Card = (props) => {
     const containerHeight = props.containerHeight ? props.containerHeight : "17rem";
     const title = props.data?.title;
     const releasedYear = props.data?.release_date.split('-')[0];
-    const posterUrl = `https://image.tmdb.org/t/p/w500${props.data?.poster_path}`
+    const posterPath = props.data?.poster_path ? props.data?.poster_path : "/vbLxDKfo8fYC8ISKKrJczNbGKLP.jpg";
+    const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`
 
     return (
         <>
