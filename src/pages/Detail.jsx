@@ -72,7 +72,9 @@ const MovieOverview = (props) => {
 
                                     <div className="mb-4">
                                         <p className="font-bold">Language</p>
-                                        { props.data?.spoken_languages[0]?.name }
+                                        { props.data?.spoken_languages.map(lang => {
+                                            return <div key={lang.name} className="flex flex-wrap gap-1"><span>{ lang.name }</span></div>
+                                        }) }
                                     </div>
                                 </div>
                                 
