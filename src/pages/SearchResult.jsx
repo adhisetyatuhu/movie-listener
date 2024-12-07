@@ -42,16 +42,6 @@ const SearchResult = () => {
                     return <Card key={movie.id} data={movie} />
                 }) }
             </div>
-
-            <h2 className="text-white text-3xl mt-12">You might be interested</h2>
-            <div className="flex flex-wrap gap-4 py-4">
-                <Card text="Title yang muncul dari hasil pencarian"></Card>
-                <Card text="Title yang muncul dari hasil pencarian"></Card>
-                <Card text="Title yang muncul dari hasil pencarian"></Card>
-                <Card text="Title yang muncul dari hasil pencarian"></Card>
-                <Card text="Title yang muncul dari hasil pencarian"></Card>
-                <Card text="Title yang muncul dari hasil pencarian"></Card>
-            </div>
         </>
     );
 }
