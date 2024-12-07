@@ -11,16 +11,17 @@ const Genre = ({children}) => {
     );
 }
 
-function Cast({name, character}) {
+function Cast({data}) {
+    const profilePath = `https://image.tmdb.org/t/p/original${data.profile_path ? data.profile_path : "/vbLxDKfo8fYC8ISKKrJczNbGKLP.jpg"}`
     return (
         <>
-            <div className="h-[17rem]">
-                <div className="relative overflow-hidden rounded-lg h-[15rem] w-[12rem] bg-slate-600/30">
-                    <figure className="bg-[#fff]/30 peer h-[15rem]">
-                        {/* <img className="hover:opacity-50 hover:cursor-pointer active:opacity-100 duration-100 transition-all" src={posterUrl} /> */}
+            <div className="">
+                <div className="relative overflow-hidden rounded-lg w-[12rem] bg-slate-600/30">
+                    <figure className="bg-[#fff]/30 peer">
+                        <img className="opacity-80 hover:cursor-pointer hover:opacity-100 duration-100 transition-all" src={profilePath} />
                     </figure>
-                    <figcaption className="absolute w-[12rem] duration-100 transition-all peer-hover:bg-black/20 peer-active:bg-black/70 py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline">
-                        {name}<span className="block">as {character}</span>
+                    <figcaption className="absolute w-[12rem] bottom-0 left-1/2 -translate-x-1/2 bg-black/70 duration-200 transition-all peer-hover:-bottom-12 peer-hover:opacity-0 peer-active:bg-black/70 py-2 rounded-b-lg text-white text-xs text-center hover:cursor-pointer hover:underline">
+                        {data.name}<span className="block">as {data.character}</span>
                     </figcaption>
                 </div>
             </div>
@@ -29,10 +30,30 @@ function Cast({name, character}) {
 }
 
 const MovieOverview = (props) => {
-
-    console.log(props.data);
     const backdrop = {backgroundImage: `url(https://image.tmdb.org/t/p/original${props.data?.backdrop_path})`};
     const posterUrl = `https://image.tmdb.org/t/p/original${props.data?.poster_path}`;
+    const [casts, setCasts] = useState([]);
+    const params = useParams();
+
+    const fetchCasts = async () => {
+        try {
+            const { data } = await tmdb.get(`/movie/${params.id}/credits`);
+            setCasts(data?.cast);
+            // console.log(data);
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchCasts(); 
+    }, []);
+
+    useEffect(() => {
+        fetchCasts();
+    }, [params.id]);
+
     return (
         <>
             <div className="my-8">
@@ -96,15 +117,9 @@ const MovieOverview = (props) => {
                 
                 <h2 className="text-3xl font-bold mt-8 mb-4">Casts</h2>
                 <div className="flex gap-2 overflow-scroll hide-scrollbar">
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
-                    <Cast name="John Doe" character="James Bon" />
+                { casts?.map((cast, index) => {
+                    return index<15 && cast.profile_path && <Cast key={index} data={cast} />
+                }) }
                 </div>
             </div>
         </>
