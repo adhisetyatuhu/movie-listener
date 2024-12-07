@@ -61,7 +61,7 @@ const MovieOverview = (props) => {
                     <div>
 
                         <figure className="h-[28rem] bg-gradient-to-r from-black/100 via-black/40 to-black/100 flex items-end flex-wrap lg:flex-nowrap">
-                            <img className="h-96 my-8 rounded-lg border border-white/50 mx-auto" src={posterUrl} />
+                            <img className="h-96 my-8 rounded-lg border border-white/50" src={posterUrl} />
                             
                             <div className="my-8 lg:px-8 text-white">
                                 <h2 className="text-3xl font-bold mb-2">{ props.data?.title }</h2>
@@ -84,7 +84,8 @@ const MovieOverview = (props) => {
                                     }) }
                                 </div>
                             </div>
-                            <div className="my-8 flex gap-16 md:gap-48 lg:gap-0 lg:flex-col">
+
+                            <div className="my-8 flex gap-16 ml-auto md:gap-48 lg:gap-0 lg:flex-col">
                                 <div>
                                     <div className="mb-4">
                                         <p className="font-bold">Status</p>
