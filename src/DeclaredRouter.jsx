@@ -5,6 +5,7 @@ import Detail from "./pages/Detail";
 import SearchResult from "./pages/SearchResult";
 import Error from "./pages/Error";
 import MainLayout from "./layouts/MainLayout";
+import Favorite from "./pages/favorite";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: 'search/',
                 element: <Home />,
+            },
+            {
+                path: 'favorite/',
+                element: <Favorite />,
             },
             {
                 path: '*',
