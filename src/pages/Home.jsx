@@ -112,12 +112,34 @@ const Home = () => {
             <div className="flex gap-2 overflow-scroll hide-scrollbar">
                 {
                     movies.map(movie => {
-                        return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} height={height} width={width} />
+                        if (favs.includes(movie)) {
+                            return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={true} height={height} width={width} />
+                        } else {
+                            return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={false} height={height} width={width} />
+                        }
                     })
                 }
             </div>
         </>
     );
+
+     // return (
+    //     <>
+    //         <div className="py-3">
+    //             {
+    //                 isLoading ? <LoadingBillboard /> : <Billboard data={billboard} />
+    //             }
+    //         </div>
+    //         <div className="flex gap-2 overflow-scroll hide-scrollbar">
+    //             {
+    //                 movies.map(movie => {
+                        
+    //                     return (favs.indexOf(movie) > -1) ? <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={true} height={height} width={width} />  : <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={false} height={height} width={width} />
+    //                 })
+    //             }
+    //         </div>
+    //     </>
+    // );
 }
 
 export default Home;

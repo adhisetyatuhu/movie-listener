@@ -66,20 +66,18 @@ const Card = (props) => {
 
     return (
         <>  
-            {isFavorite &&
-                <div className={classes} style={{"height": containerHeight}}>
-                    <div className="relative overflow-hidden rounded-lg" style={{"height": height, "width": width}}>
-                        {props.children}
-                        <LoveButton isFavoriteProp={props.isFavorite} sendIsFavorite={setIsFavorite} />
-                        <figure onClick={() => { handleClick(props.data?.id) } } className="bg-[#fff] peer" style={{"height": height}}>
-                            <img className="hover:opacity-50 hover:cursor-pointer active:opacity-100 duration-100 transition-all" src={posterUrl} />
-                        </figure>
-                        <figcaption onClick={() => { handleClick(props.data?.id) } } className="absolute duration-100 transition-all peer-hover:bg-black/40 peer-active:bg-black/70 py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline" style={{"width": width}}>
-                            {title}<span>{releasedYear ? " ("+releasedYear+")": ""}</span>
-                        </figcaption>
-                    </div>
+            <div className={classes} style={{"height": containerHeight}}>
+                <div className="relative overflow-hidden rounded-lg" style={{"height": height, "width": width}}>
+                    {props.children}
+                    <LoveButton isFavoriteProp={props.isFavorite} sendIsFavorite={setIsFavorite} />
+                    <figure onClick={() => { handleClick(props.data?.id) } } className="bg-[#fff] peer" style={{"height": height}}>
+                        <img className="hover:opacity-50 hover:cursor-pointer active:opacity-100 duration-100 transition-all" src={posterUrl} />
+                    </figure>
+                    <figcaption onClick={() => { handleClick(props.data?.id) } } className="absolute duration-100 transition-all peer-hover:bg-black/40 peer-active:bg-black/70 py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline" style={{"width": width}}>
+                        {title}<span>{releasedYear ? " ("+releasedYear+")": ""}</span>
+                    </figcaption>
                 </div>
-            }
+            </div>
         </>
     );
 }
