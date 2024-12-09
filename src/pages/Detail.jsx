@@ -18,7 +18,7 @@ function Cast({data}) {
             <div className="">
                 <div className="relative overflow-hidden rounded-lg w-[12rem] bg-slate-600/30">
                     <figure className="bg-[#fff]/30 peer">
-                        <img className="opacity-80 hover:cursor-pointer hover:opacity-100 duration-100 transition-all" src={profilePath} />
+                        <img loading="lazy" className="opacity-80 hover:cursor-pointer hover:opacity-100 duration-100 transition-all" src={profilePath} />
                     </figure>
                     <figcaption className="absolute w-[12rem] bottom-0 left-1/2 -translate-x-1/2 bg-black/70 duration-200 transition-all peer-hover:-bottom-12 peer-hover:opacity-0 peer-active:bg-black/70 py-2 rounded-b-lg text-white text-xs text-center hover:cursor-pointer hover:underline">
                         {data.name}<span className="block">as {data.character}</span>
@@ -61,7 +61,7 @@ const MovieOverview = (props) => {
                     <div>
 
                         <figure className="h-[28rem] bg-gradient-to-r from-black/100 via-black/40 to-black/100 flex items-end flex-wrap lg:flex-nowrap">
-                            <img className="h-96 my-8 rounded-lg border border-white/50" src={posterUrl} />
+                            <img loading="eager" className="h-96 my-8 rounded-lg border border-white/40" src={posterUrl} />
                             
                             <div className="my-8 lg:px-8 text-white">
                                 <h2 className="text-3xl font-bold mb-2">{ props.data?.title }</h2>
