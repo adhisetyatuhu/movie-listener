@@ -18,12 +18,10 @@ const Favorite = () => {
     }
 
     useEffect(() => {
-        console.log(favs);
         handleFavList();
     }, [])
 
     useEffect(() => {
-        console.log(favs);
         handleFavList();
     }, [newFavList], [favs])
 

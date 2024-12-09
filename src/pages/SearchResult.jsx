@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import tmdb from "../utils/axios";
@@ -8,6 +8,24 @@ const SearchResult = () => {
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
+    const [favs, setFavs] = useOutletContext()
+    const [newFavList, setNewFavList] = useState({});
+
+    const handleFavList = () => {
+        let currentList = favs;
+        let index = currentList.indexOf(newFavList.data);
+        if (newFavList.isFavorite && index === -1) {
+            currentList.push(newFavList.data);
+        } else if (!newFavList.isFavorite && index >= 0) {
+            currentList.splice(index, 1);
+        }
+        setFavs(currentList);
+    }
+
+    useEffect(() => {
+        handleFavList();
+    }, [newFavList])
 
     const searchMovies = async () => {
         setQuery(params.keyword);
@@ -39,7 +57,7 @@ const SearchResult = () => {
                 }) } */}
 
                 { movies.map(movie => {
-                    return <Card key={movie.id} data={movie} />
+                    return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} />
                 }) }
             </div>
         </>
