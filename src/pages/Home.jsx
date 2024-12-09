@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import CardBanner from "../components/CardBanner";
 import tmdb from "../utils/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const Billboard = (props) => {
     const navigate = useNavigate();
@@ -54,6 +54,24 @@ const Home = () => {
     const [billboard, setBillboard] = useState(null);
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [favs, setFavs] = useOutletContext()
+    const [newFavList, setNewFavList] = useState({});
+
+    const handleFavList = () => {
+        let currentList = favs;
+        let index = currentList.indexOf(newFavList.data);
+        if (newFavList.isFavorite && index === -1) {
+            currentList.push(newFavList.data);
+        } else if (!newFavList.isFavorite && index >= 0) {
+            currentList.splice(index, 1);
+        }
+        setFavs(currentList);
+    }
+
+    useEffect(() => {
+        console.log(favs);
+        handleFavList();
+    }, [newFavList])
     
     const fetchMovies = async () => {
         try {
@@ -94,7 +112,7 @@ const Home = () => {
             <div className="flex gap-2 overflow-scroll hide-scrollbar">
                 {
                     movies.map(movie => {
-                        return <Card key={movie.id} data={movie} height={height} width={width} />
+                        return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} height={height} width={width} />
                     })
                 }
             </div>

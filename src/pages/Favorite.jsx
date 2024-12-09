@@ -1,4 +1,6 @@
+import { useOutletContext } from "react-router-dom";
 import Card from "../components/Card";
+import { useEffect, useState } from "react";
 
 const FAV_MOVIES = {
     "page": 1,
@@ -410,6 +412,29 @@ const FAV_MOVIES = {
 
 const Favorite = () => {
     const movies = FAV_MOVIES.results;
+    const [favs, setFavs] = useOutletContext();
+    const [newFavList, setNewFavList] = useState({});
+
+    const handleFavList = () => {
+        let currentList = favs;
+        let index = currentList.indexOf(newFavList.data);
+        if (newFavList.isFavorite && index === -1) {
+            currentList.push(newFavList.data);
+        } else if (!newFavList.isFavorite && index >= 0) {
+            currentList.splice(index, 1);
+        }
+        setFavs(currentList);
+    }
+
+    useEffect(() => {
+        console.log(favs);
+    }, [])
+
+    useEffect(() => {
+        console.log(favs);
+        handleFavList();
+    }, [newFavList])
+
     return (
         <>
             <h2 className="text-white text-3xl mt-12">My Favorite Movies</h2>
@@ -418,8 +443,8 @@ const Favorite = () => {
                     return <Card key={movie.id} data={movie} />
                 }) } */}
 
-                { movies?.map(movie => {
-                    return <Card key={movie.id} data={movie} isFavorite={true} />
+                { favs?.map(movie => {
+                    return <Card key={movie.id} data={movie} isFavorite={true} sendNewFav={setNewFavList} />
                 }) }
             </div>
         </>

@@ -1,14 +1,35 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const LoveButton = ({isFavorite}) => {
-    let favClasses = "fill-white/40 group-hover:fill-red-100 group-active:fill-red-500";
-    if (isFavorite) {
-        favClasses = "fill-red-500 group-hover:fill-red-300 group-active:fill-white/40";
+const LoveButton = ({ isFavoriteProp, sendIsFavorite}) => {
+    const [isFavorite, setIsFavorite] = useState(isFavoriteProp);
+    const [favClasses, setFavClasses] = useState("");
+    
+    const handleFavorite = () => {
+        setIsFavorite(!isFavorite);
     }
+    
+    const handleClases = () => {
+        if (isFavorite) {
+            setFavClasses("fill-red-500 group-hover:fill-red-300 group-active:fill-white/40");
+        } else {
+            // default or if false
+            setFavClasses("fill-white/40 group-hover:fill-red-100 group-active:fill-red-500");
+        }
+    }
+
+    useEffect(() => {
+        handleClases();
+    }, []);
+
+    useEffect(() => {
+        handleClases();
+        sendIsFavorite(isFavorite);
+    }, [isFavorite]);
 
     return (
         <>
-            <span className="absolute group bg-black/20 text-white rounded-full text-xs p-1.5 m-1 top-0 right-0 z-10 hover:cursor-pointer hover:bg-black/10">
+            <span onClick={handleFavorite} className="absolute group bg-black/20 text-white rounded-full text-xs p-1.5 m-1 top-0 right-0 z-10 hover:cursor-pointer hover:bg-black/10">
                 
                 <svg className={favClasses} height={20} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 {/* <!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--> */}
@@ -19,6 +40,15 @@ const LoveButton = ({isFavorite}) => {
 }
 
 const Card = (props) => {
+    const [isFavorite, setIsFavorite] = useState(props.isFavorite);
+
+    useEffect(() => {
+        props.sendNewFav({
+            data: props.data,
+            isFavorite: isFavorite
+        });
+    }, [isFavorite]);
+
     const navigate = useNavigate();
 
     const handleClick = (movieId) => {
@@ -35,19 +65,21 @@ const Card = (props) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`
 
     return (
-        <>
-            <div className={classes} style={{"height": containerHeight}}>
-                <div className="relative overflow-hidden rounded-lg" style={{"height": height, "width": width}}>
-                    {props.children}
-                    <LoveButton isFavorite={props.isFavorite} />
-                    <figure onClick={() => { handleClick(props.data?.id) } } className="bg-[#fff] peer" style={{"height": height}}>
-                        <img className="hover:opacity-50 hover:cursor-pointer active:opacity-100 duration-100 transition-all" src={posterUrl} />
-                    </figure>
-                    <figcaption onClick={() => { handleClick(props.data?.id) } } className="absolute duration-100 transition-all peer-hover:bg-black/40 peer-active:bg-black/70 py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline" style={{"width": width}}>
-                        {title}<span>{releasedYear ? " ("+releasedYear+")": ""}</span>
-                    </figcaption>
+        <>  
+            {isFavorite &&
+                <div className={classes} style={{"height": containerHeight}}>
+                    <div className="relative overflow-hidden rounded-lg" style={{"height": height, "width": width}}>
+                        {props.children}
+                        <LoveButton isFavoriteProp={props.isFavorite} sendIsFavorite={setIsFavorite} />
+                        <figure onClick={() => { handleClick(props.data?.id) } } className="bg-[#fff] peer" style={{"height": height}}>
+                            <img className="hover:opacity-50 hover:cursor-pointer active:opacity-100 duration-100 transition-all" src={posterUrl} />
+                        </figure>
+                        <figcaption onClick={() => { handleClick(props.data?.id) } } className="absolute duration-100 transition-all peer-hover:bg-black/40 peer-active:bg-black/70 py-2 rounded-b-lg bottom-0 left-1/2 -translate-x-1/2 text-white text-xs text-center bg-black/70 hover:cursor-pointer hover:underline" style={{"width": width}}>
+                            {title}<span>{releasedYear ? " ("+releasedYear+")": ""}</span>
+                        </figcaption>
+                    </div>
                 </div>
-            </div>
+            }
         </>
     );
 }
