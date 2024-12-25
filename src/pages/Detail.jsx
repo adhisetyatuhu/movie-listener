@@ -56,10 +56,10 @@ const MovieOverview = (props) => {
     return (
         <>
             <div className="my-8">
-                <div className="relative bg-no-repeat bg-center bg-[length:100%]" style={backdrop}>
+                <div className="relative bg-no-repeat bg-center lg:bg-[length:100%]" style={backdrop}>
                     <div>
 
-                        <figure className="h-[28rem] bg-gradient-to-r from-black/100 via-black/40 to-black/100 flex items-end flex-wrap lg:flex-nowrap">
+                        <figure className="lg:h-[28rem] bg-gradient-to-r from-black/100 via-black/40 to-black/100 flex items-end flex-wrap lg:flex-nowrap">
                             <img loading="eager" className="h-96 my-8 rounded-lg border border-white/40" src={posterUrl} />
 
                             <div className="my-8 lg:px-8 text-white">
@@ -77,14 +77,14 @@ const MovieOverview = (props) => {
                                 {/* end rating */}
 
                                 <p className="my-6">{props.data?.overview}</p>
-                                <div className="flex gap-2">
+                                <div className="flex gap-2 flex-wrap">
                                     {props.data?.genres.map(genre => {
                                         return <Genre key={genre.id}>{genre.name}</Genre>
                                     })}
                                 </div>
                             </div>
 
-                            <div className="my-8 flex gap-16 ml-auto md:gap-48 lg:gap-0 lg:flex-col">
+                            <div className="my-8 flex gap-16 lg:ml-auto md:gap-48 lg:gap-0 lg:flex-col">
                                 <div>
                                     <div className="mb-4">
                                         <p className="font-bold">Status</p>
