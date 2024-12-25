@@ -57,6 +57,15 @@ const Home = () => {
     const [favs, setFavs] = useOutletContext()
     const [newFavList, setNewFavList] = useState({});
 
+    const showCard = (movie) => {
+        const found = favs.find((fav) => fav.id === movie.id);
+        if (found) {
+            return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={true} />
+        } else {
+            return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={false} />
+        }
+    }
+
     const handleFavList = () => {
         let currentList = favs;
         let index = currentList.indexOf(newFavList.data);
@@ -71,6 +80,10 @@ const Home = () => {
     useEffect(() => {
         handleFavList();
     }, [newFavList])
+
+    useEffect(() => {
+        console.log(favs);
+    }, [favs, newFavList])
 
     const fetchMovies = async () => {
         try {
@@ -94,13 +107,6 @@ const Home = () => {
         setBillboard(movies[randomIdx]);
     }, [movies]);
 
-    const size = 15;
-    // height and width ratio = 10:8
-    const height = `${size}rem`;
-    const width = `${size * 0.8}rem`;
-    const containerHeight = `${size + 2}rem`;
-    const borderRadius = "0.5rem";
-
     return (
         <>
             <div className="py-3">
@@ -110,13 +116,7 @@ const Home = () => {
             </div>
             <div className="flex gap-2 overflow-scroll hide-scrollbar">
                 {
-                    movies.map(movie => {
-                        if (favs.includes(movie)) {
-                            return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={true} height={height} width={width} />
-                        } else {
-                            return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} isFavorite={false} height={height} width={width} />
-                        }
-                    })
+                    movies.map(movie => showCard(movie))
                 }
             </div>
         </>

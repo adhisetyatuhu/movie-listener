@@ -3,8 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 
 function MainLayout() {
-    let movieList = [
-    ]
+    let movieList = []
 
     const [favs, setFavs] = useState(movieList);
 
