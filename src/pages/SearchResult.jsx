@@ -51,14 +51,14 @@ const SearchResult = () => {
     return (
         <>
             <h2 className="text-white text-3xl mt-12">Search "{params.keyword}"</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 py-4">
+            <div className="flex gap-1 flex-wrap">
                 {/* { isLoading ? <h1>Loading</h1> : movies.map(movie => {
                     return <Card key={movie.id} data={movie} />
                 }) } */}
 
-                { movies.map(movie => {
+                {movies.map(movie => {
                     return <Card key={movie.id} data={movie} sendNewFav={setNewFavList} />
-                }) }
+                })}
             </div>
         </>
     );
