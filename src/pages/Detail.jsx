@@ -115,7 +115,9 @@ const MovieOverview = (props) => {
                     </div>
                 </div>
 
-                <h2 className="text-3xl font-bold mt-8 mb-4">Casts</h2>
+                {
+                    casts.length > 0 ? <h2 className="text-3xl font-bold mt-8 mb-4">Casts</h2> : <></>
+                }
                 <div className="flex gap-2 overflow-scroll hide-scrollbar">
                     {casts?.map((cast, index) => {
                         return index < 15 && cast.profile_path && <Cast key={index} data={cast} />
